@@ -1,0 +1,51 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.box {
+	width: 400px;
+	height: 130px;
+	font-size: 12px;
+	font-family: "微软雅黑","宋体";
+	color: #000;
+	background-color: #fff;
+	padding-top: 70px;
+}
+.box table {
+	width: 400px;
+	height: 130px;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border: none;
+}
+.box td {
+	height: 22px;
+	font-size: 12px;
+}
+.box span{
+	display: block;
+	width: 190px;
+	height: 36px;
+	overflow-y: hidden;
+	word-wrap:break-word;
+}
+.box table img {
+	width: 95px;
+	height: 100px;
+	padding-right: 5px
+}
+.imgTd {
+	width: 110px;
+	text-align: right;
+	vertical-align: top;
+	padding-top: 5px;
+}
+.titleTd {
+	width: 85px;
+}
+.valueTd {
+	width: 200px;
+}
+br{
+	height: 10px !important;
+}

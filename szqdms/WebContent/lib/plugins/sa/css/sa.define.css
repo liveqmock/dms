@@ -1,0 +1,6 @@
+@charset "utf-8";
+#freetable{border-top:1px solid silver;border-left:1px solid silver;border-right:1px solid silver;border-bottom:1px solid silver;margin-top:10px;width:99%;CURSOR: hand;border-collapse:collapse;}
+#freetable td{border-top:1px solid silver;border-left:1px solid silver;border-right:1px solid silver;border-bottom:1px solid silver;}
+#freeST{border-top:1px solid silver;border-left:1px solid silver;border-right:1px solid silver;border-bottom:1px solid silver;border-collapse:collapse;text-align:center;CURSOR: hand; table-layout:fixed;}
+#freeST td{border-top:1px solid silver;border-left:1px solid silver;border-right:1px solid silver;border-bottom:1px solid silver;text-align:center;}
+#freeST tr{height:23px;line-height:23px;}

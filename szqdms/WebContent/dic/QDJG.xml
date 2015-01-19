@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DATA>
+  <R c="1001" t="配送中心一" s="xsb" a="xiaoshoubu" l="2" p="10"/>
+  <R c="1002" t="配送中心二" s="cgb" a="caigoubu" l="2" p="10"/>
+  <R c="1003" t="配送中心三" s="cwb" a="caiwubu" l="2" p="10"/>
+</DATA>

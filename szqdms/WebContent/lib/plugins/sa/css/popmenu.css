@@ -1,0 +1,9 @@
+@charset "utf-8";
+.menutable {BACKGROUND-COLOR: #ffffff; BORDER-BOTTOM: #307ce8 1px solid; BORDER-LEFT: #307ce8 5px solid; BORDER-RIGHT: #307ce8 1px solid; BORDER-TOP: #94bcf3 1px solid; FONT-SIZE: 12px; POSITION: absolute; Z-INDEX: 100;}
+.menutrin {BACKGROUND-COLOR: #1a71e6; COLOR: #ffffff; CURSOR: hand;}
+.menutrout {COLOR: #000000; CURSOR: hand;}
+.menutd0 {HEIGHT: 25px; TEXT-ALIGN: center; WIDTH: 28px;}
+.menutd1 {FONT-FAMILY: Webdings; TEXT-ALIGN: right; WIDTH: 46px;}
+.linktd1 {WIDTH: 46px;}
+.menutd2 {WIDTH: 4px;}
+.menuhr {BORDER-BOTTOM: #307ce8 1px inset; BORDER-LEFT: #307ce8 1px inset; BORDER-RIGHT: #307ce8 1px inset; BORDER-TOP: #307ce8 1px inset;}

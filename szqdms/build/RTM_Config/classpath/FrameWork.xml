@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<framework>
+	<interceptors>
+		<interceptor name="restful-1" class="com.org.mvc.interceptor.RestfulInterceptor">
+			<param name="prefix" value="com.org.dms.action;com.org.frameImpl.action"/>
+		</interceptor>
+		<interceptor name="xmlResult" class="com.org.mvc.interceptor.ActionResultInterceptor">
+			<param name="suffix" value=".ajax"/>
+		</interceptor>
+		<interceptor name="CleanTransaction" class="com.org.mvc.interceptor.ClearTransactionInterceptor">
+		</interceptor> 
+		<!-- 
+		<interceptor name="ActionLogger" class="com.org.mvc.interceptor.ActionLogInterceptor">
+ 			 <param name="logClass" value="com.infodms.dms.po.TlActionHisPO" /> 
+  		</interceptor>
+  		 -->
+	</interceptors>
+	<components>
+		<component name="sysconfig" class="com.org.framework.plugin.SysConfig">
+		</component>
+	</components>
+	<global-results>
+		<result name="login">/jsp/jQFrameWork/default.jsp</result>
+		<result name="index">/index.jsp</result>
+		<result name="menu">/menu.jsp</result>
+	 	<result name="error">/error.jsp</result>
+	 	<result name="setPwd">/setPwd.jsp</result>
+	 	<result name="sessionInvalid">/sessionInvalid.jsp</result>
+	</global-results>
+</framework>

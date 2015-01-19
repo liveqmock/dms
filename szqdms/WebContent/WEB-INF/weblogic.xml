@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://www.bea.com/ns/weblogic/weblogic-web-app" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+  <context-root>/szqdms</context-root>
+  <container-descriptor>
+    <index-directory-enabled>true</index-directory-enabled>
+    <show-archived-real-path-enabled>true</show-archived-real-path-enabled>
+  </container-descriptor>
+  <session-descriptor>
+	<persistent-store-type>replicated</persistent-store-type>
+	<sharing-enabled>true</sharing-enabled>
+  </session-descriptor>
+</weblogic-web-app>

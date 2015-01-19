@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!-- 此文件用于生成EAR包 by fuxiao 20140906 -->
+<!-- Ear需要的Application.xml文件没有写好需要重新编辑,还有MF文件 -->
+<project name="szqdms" default="all" basedir=".">
+	
+	<!--定义AppName-->
+	<property name="app.name" value="SZQ_DMS"/>
+	
+	<!--引用外部properties文件:此文件用来存放App版本号，如需增添其他变量，也可以在此文件中添加 -->
+	<property file="build.properties"/>
+	
+	<!--定义时间变量-->
+	<tstamp>
+		<format property="app.time" pattern="yyyyMMdd_hh_mm"/>
+	</tstamp>	
+	
+	<!--Java源文件地址文件夹-->
+	<property name="src.dir" value="${basedir}/src"/>
+	<!--项目引用的全部Jar文件夹地址-->
+	<property name="lib.dir" value="${basedir}/WebContent/WEB-INF/lib"/>
+	
+	<!--打包时构建环境-->
+	<property name="build.dir" value="build"/>
+	<property name="build.lib" value="${build.dir}/lib"/>
+	<property name="build.classes" value="${build.dir}/classes"/>
+	
+	<!-- 全局变量设定 -->
+	<property name="debug.flag" value="on" />
+
+	<!-- 编译需要的clasepath -->
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+	
+	<!--1, 工程准备工作-->
+	<target name="init" depends="clean">
+		<!-- 构建打包文件 -->
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${build.lib}"/>
+		<mkdir dir="${build.classes}"/>
+		
+		<!--将需要的jar包Copy到编译文件夹${build.lib}下-->
+		<copy todir="${build.lib}/lib">
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar"/>
+				<exclude name="servlet-api.jar"/>
+				<exclude name="ojdbc7.jar"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<!--2, 编译并生成Jar文件-->
+	<target name="compile" depends="init">
+		<!--编译-->
+		<javac destdir="${build.classes}" debug="${debug.flag}" description="true" includeantruntime="true" encoding="UTF-8" target="1.6">
+			<src path="${src.dir}"/>
+			<classpath refid="classpath" />
+		</javac>
+		<!--生成Jar-->
+		<jar destfile="${build.lib}/DMSApp.jar" basedir="${build.classes}"></jar>
+	</target>
+	
+	<!--3, 生成war包-->
+	<target name="szqdmsWeb" depends="init">
+		<war destfile="${build.lib}/DMSWeb.war" 
+			 webxml="${basedir}/WebContent/WEB-INF/web.xml"
+			 manifest="${basedir}/WebContent/META-INF/MANIFEST.MF"
+			 >
+			<fileset dir="${basedir}/WebContent"></fileset>
+		</war>
+	</target>
+	
+	<!--4, 生成EAR包-->
+	<target name="szqdmsEar" depends="compile,szqdmsWeb">
+		<ear destfile="${basedir}/${app.name}_SRV_${version}_${app.time}.ear"
+			 appxml="${basedir}/WebContent/META-INF/application.xml">
+			<fileset dir="${build.lib}">
+				<include name="DMSApp.jar"/>
+				<include name="DMSWeb.war"/>
+				<include name="lib/**/*.jar"/>
+			</fileset>
+		</ear>
+	</target>	
+		
+	<!--5, 最终调用，删除编译时使用的一些文件夹及文件 -->
+	<target name="all" depends="szqdmsEar">
+		<delete dir="${build.dir}" />
+	</target>
+</project>

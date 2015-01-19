@@ -1,0 +1,74 @@
+body{background:#EAEEF5;overflow:hidden;}
+#canvas {
+    height: 510px;
+    width: 700px;
+    position: relative;
+}
+#paper {
+    background: #EAEEF5;
+    height: 510px;
+    width: 700px;
+}
+#aomen,#xianggang,#fujian,#hainan,#taiwan,#guangxi,#guizhou,#chongqing,#sichuan,#shanxi,#gansu,#ningxia,#neimenggu,#xinjiang,#xizang,#qinghai,#yunnan,#hebei,#jiangxi, #shanghai, #heilongjiang,#shandong, #anhui, #hubei, #shan3i,#jilin,#hunan,#jiangsu,#henan,#liaoning,#zhejiang,#guangdong,#beijing,#tianjin {
+    display: none;
+    height: 210px;
+    overflow: auto;
+    position: absolute;
+    padding:5px;
+    width: 244px;
+    background:url(../images/default/mapTitleBg.png) no-repeat;
+    z-index: 99999;
+    font-size: 14px;
+    left: 565px; top: 25px;
+   	font-size: 14px;
+}
+.mapsHeilj,.mapsJil,.mapsLiaon,.beij,.tianj,.hebei,.shanx,.neimg,.shand,.jiangs,.anh,.shangh,.zhej,.jiangx,.fuj,.taiw,.guangd,.guangx,.hain,.xinj,.gans,.ningx,.qingh,.shan3x,.chongq,.sic,.guiz,.yunn,.xiz,.hen,.hub,.hun {position: absolute; z-index: 9999; font-size: 12px;cursor:pointer;}
+.mapsHeilj {left: 500px; top: 75px;}
+.mapsJil {left: 500px; top: 122px;}
+.mapsLiaon {left: 475px; top: 150px;}
+.beij {left: 415px; top: 170px;}
+.tianj {left: 438px; top: 195px;}
+.hebei {left: 405px; top: 200px;}
+.shanx {left: 375px; top: 220px;}
+.neimg {left: 340px; top: 170px;}
+.shand {left: 432px; top: 227px;}
+.jiangs {left: 457px; top: 260px;}
+.anh {left: 439px; top: 290px;}
+.shangh {left: 490px; top: 290px;}
+.zhej {left: 470px; top: 310px;}
+.jiangx {left: 427px; top: 330px;}
+.fuj {left: 455px; top: 350px;}
+.taiw {left: 495px; top: 380px;}
+.guangd {left: 415px; top: 385px;}
+.guangx {left: 355px; top: 395px;}
+.hain {left: 367px; top: 453px;}
+.xinj {left: 120px; top: 170px;}
+.gans {left: 218px; top: 180px;}
+.ningx {left: 312px; top: 223px;}
+.qingh {left: 215px; top: 240px;}
+.shan3x {left: 343px; top: 260px;}
+.chongq {left: 335px; top: 318px;}
+.sic {left: 275px; top: 300px;}
+.guiz {left: 325px; top: 360px;}
+.yunn {left: 265px; top: 386px;}
+.xiz {left: 120px; top: 285px;}
+.hen {left: 390px; top: 260px;}
+.hub {left: 385px; top: 295px;}
+.hun {left: 380px; top: 340px;}
+
+h2 {
+    line-height: 36px;
+    padding: 0;
+    margin:0;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+#canvas p{font-size:13px;text-align:left;padding-left:10px;padding-top:8px;}
+#canvas p a{color:red;font-weight:bold;}
+.listpageright { float:left; width:96%;height:100%; margin:0; }
+.listpageright ul {}
+.listpageright li{ margin:5px;padding-left:10px;line-height:28px; height:35px; background: url(../images/default/nav.gif) left top no-repeat; font-size:14px}
+.listpageright li a{ margin-left:5px;color:#0d3687;}
+.listpageright li div{color:#666666;}
+.listpageright li a:hover { color:#9f2e2e;}

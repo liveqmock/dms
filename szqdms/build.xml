@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!-- 此文件用于生成WAR包 by fuxiao 20141217 -->
+<project name="szqdms" default="all" basedir=".">
+	
+	<!-- 定义AppName-->
+	<property name="app.name" value="szqdms"/>
+	
+	<!-- 引用外部properties文件:此文件用来存放App版本号，如需增添其他变量，也可以在此文件中添加 -->
+	<property file="build.properties"/>
+	
+	<!-- 定义时间变量-->
+	<tstamp>
+		<format property="app.time" pattern="yyyyMMdd"/>
+	</tstamp>	
+	
+	<!-- Java源文件地址文件夹-->
+	<property name="src.dir" value="${basedir}/src"/>
+	
+	<!-- 项目引用的全部Jar文件夹地址-->
+	<property name="lib.dir" value="${basedir}/WebContent/WEB-INF/lib"/>
+	
+	<!--打包时构建环境-->
+	<property name="build.dir" value="build"/>
+	<property name="build.lib" value="${build.dir}/lib"/>
+	<property name="build.classes" value="${build.dir}/classes"/>
+	<property name="build.war" value="${build.dir}/war"/>
+	<property name="build.config" value="${build.dir}/RTM_Config"/>
+	
+	<!-- 全局变量设定 -->
+	<property name="debug.flag" value="on" />
+
+	<!-- 编译需要的clasepath -->
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+	<!-- 如果存在以下文件，则进行删除 -->
+	<target name="clean">
+		<delete dir="${build.lib}"/>
+		<delete dir="${build.classes}"/>
+		<delete dir="${build.war}"/>
+		<delete dir="${build}/*.war"/>
+	</target>
+	
+	<!--1, 工程准备工作-->
+	<target name="init" depends="clean">
+		<!-- 构建打包文件 -->
+		<mkdir dir="${build.lib}"/>
+		<mkdir dir="${build.classes}"/>
+		<mkdir dir="${build.war}"/>
+		
+		<!--将需要的jar包Copy到编译文件夹${build.lib}下-->
+		<copy todir="${build.lib}/lib">
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar"/>
+				<exclude name="servlet-api.jar"/>
+				<exclude name="ojdbc7.jar"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<!--2, 编译并生成Jar文件-->
+	<target name="compile" depends="init">
+		
+		<!--编译-->
+		<javac destdir="${build.classes}" debug="${debug.flag}" description="true" includeantruntime="true" encoding="UTF-8" target="1.6">
+			<src path="${src.dir}"/>
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+	
+	<!--3，构建War包结构 -->
+	<target name="copyWeb" depends="compile">
+		<copy todir="${build.war}">
+		
+			<!-- 复制工程中WebcContent文件夹下所有文件,除去jar,class文件 -->
+			<fileset dir="${basedir}/WebContent" excludes="WEB-INF/classes/*.*">
+				<exclude name="**/*.jar"/>
+				<exclude name="**/*.zip"/>
+				<exclude name="**/*.class"/>
+			</fileset>
+		</copy>
+					
+		<!-- 删除classes文件，并重新生成 -->		
+		<delete dir="${build.war}/WEB-INF/classes" />
+		<mkdir dir="${build.war}/WEB-INF/classes" />
+			
+		<!-- 删除数据库连接文件 -->
+		<delete dir="${build.war}/WEB-INF/conf" />
+		<mkdir dir="${build.war}/WEB-INF/conf" />
+			
+		<!-- 复制jar文件 -->
+		<copy todir="${build.war}/WEB-INF/lib">
+			<fileset dir="${build.lib}/lib" />
+		</copy>
+				
+		<!-- 复制编译后的class文件 -->
+ 		<copy todir="${build.war}/WEB-INF/classes">
+ 			<fileset dir="${build.classes}" />
+ 			<fileset dir="${build.config}/classpath" />
+		</copy> 
+	
+		<!-- 复制数据库配置文件 -->
+		<copy todir="${build.war}/WEB-INF/conf">
+ 			<fileset dir="${build.config}/conf" />
+		</copy>
+
+	</target>
+	
+	<!-- 3, 生成war包-->
+	<target name="szqdmsWeb" depends="copyWeb">
+		<war destfile="${build.dir}/${app.name}_RTM_${version}_${app.time}.war" 
+			 webxml="${basedir}/WebContent/WEB-INF/web.xml"
+			 manifest="${basedir}/WebContent/META-INF/MANIFEST.MF"
+			 >
+			<fileset dir="${build.war}"></fileset>
+		</war>
+	</target>
+	
+	<!-- 4, 最终调用，删除编译时使用的一些文件夹及文件-->
+ 	<target name="all" depends="szqdmsWeb">
+		<delete dir="${build.lib}" />
+		<delete dir="${build.classes}" />
+		<delete dir="${build.war}" />
+	</target> 
+	 
+</project>

@@ -1,0 +1,53 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+br{
+	height: 2mm !important;
+}
+.formBar{
+	display: none !important;
+}
+.box {
+	width: 8cm;
+	height: 2.6cm;
+	background-color: #999;
+	padding-top: 1.4cm;
+}
+.box table {
+	width: 8cm;
+	height: 2.5cm;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border: none;
+}
+.box td {
+	height: 0.5cm;
+	font-size: 12px;
+	font-family: "宋体";
+}
+.box td span{
+	display: block;
+	font-size: 12px !important;
+	font-family: "宋体" !important;
+	width: 3.8cm;
+	height: 0.9cm;
+	overflow-y: hidden;
+}
+.box table img {
+	width: 2cm;
+	height: 2cm;
+	padding-right: 0.1cm;
+}
+.imgTd {
+	width: 2.3cm;
+	text-align: right;
+	vertical-align: top;
+	padding-top: 2mm;
+}
+.titleTd {
+	width: 1.7cm;
+}
+.valueTd {
+	width: 4cm;
+}
